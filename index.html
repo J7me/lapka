@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор QR-кода</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css ">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons " rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg, #FFFF, #E8F3F3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .main-container {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #388A85;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #388A85;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .input-field input {
+            border: 2px solid #388A85;
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            background: #2D6C67;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        .btn i.material-icons {
+            margin-right: 10px;
+        }
+
+        .confirmation-message {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .confirmation-message i.material-icons {
+            font-size: 48px;
+            color: #2D6C67;
+        }
+
+        .confirmation-message p {
+            font-size: 18px;
+            color: #388A85;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="title">Счастливая лапка</div>
+        <div class="subtitle" id="subtitle">Пожалуйста введите код для подтверждения заказа!</div>
+        <div class="input-field" id="inputField">
+            <input id="productName" type="text" placeholder="Код">
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action" onclick="confirmOrder()">
+            <i class="material-icons">check</i> Подтвердить
+        </button>
+        <div class="confirmation-message" id="confirmationMessage">
+            <i class="material-icons">check_circle</i>
+            <p>Заказ подтвержден</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
+    <script>
+        function confirmOrder() {
+            const code = document.getElementById('productName').value;
+            const subtitle = document.getElementById('subtitle');
+            const inputField = document.getElementById('inputField');
+            const button = document.querySelector('.btn');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+
+            if (code === '1234') {
+                subtitle.style.display = 'none';
+                inputField.style.display = 'none';
+                button.style.display = 'none';
+                confirmationMessage.style.display = 'block';
+            } else {
+                alert('Неверный код. Попробуйте снова.');
+            }
+        }
+    </script>
+</body>
+
+</html>
